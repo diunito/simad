@@ -1,0 +1,10 @@
+localhost:
+:3000 -> tulip
+:5000 -> destructivefarm
+
+vulnbox:
+ctf_proxy:
+proxy/filter_modules/[servizio]/in.py
+proxy/filter_modules/[servizio]/out.py
+ctf_scripts:
+sudo dump.sh <dir>
