@@ -1,0 +1,19 @@
+{
+  "services": [],
+  "global_config": {
+    "keyword": "EH! VOLEVI",
+    "verbose": false,
+    "nginx": {
+      "connect_timeout": 5,
+      "max_fails": 1,
+      "fail_timeout": 20
+    },
+    "dos": {
+      "enabled": false,
+      "duration": 60,
+      "interval": 2
+    },
+    "max_stored_messages": 10,
+    "max_message_size": 65535
+  }
+}

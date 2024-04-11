@@ -1,0 +1,11 @@
+services:
+  http_service:
+    image: httpd
+    hostname: http_service
+    # ports:
+      # - 80:80
+
+networks:
+  default:
+    name: ctf_network
+    external: true
