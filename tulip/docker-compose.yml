@@ -6,7 +6,7 @@ services:
       - internal
     restart: always
     ports:
-      - "127.0.0.1:27018:27018"
+      - "127.0.0.1:27017:27017"
 
   frontend:
     build:
