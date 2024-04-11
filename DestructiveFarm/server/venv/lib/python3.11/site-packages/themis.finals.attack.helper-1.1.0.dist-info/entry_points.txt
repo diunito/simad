@@ -1,0 +1,3 @@
+[console_scripts]
+themis-finals-attack = themis.finals.attack.helper:run
+
