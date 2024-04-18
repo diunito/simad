@@ -3,9 +3,9 @@ CONFIG = {
 
     # The clients will run sploits on TEAMS and
     # fetch FLAG_FORMAT from sploits' stdout.
-    'TEAMS': {'Team #{}'.format(i): '10.66.{}.1'.format(i)
-              for i in range(1, 9 + 1)},
-    'FLAG_FORMAT': r'ptm[A-Z0-9]{28}=',
+    'TEAMS': {'Team #{}'.format(i): '10.60.{}.1'.format(i)
+              for i in range(1, 100 + 1)},
+    'FLAG_FORMAT': r'[A-Z0-9]{31}=',
     #'FLAG_FORMAT': r'[A-Z0-9]{31}=',
 
     # This configures how and where to submit flags.
@@ -19,13 +19,19 @@ CONFIG = {
     # 'SYSTEM_URL': 'http://monitor.ructfe.org/flags',
     # 'SYSTEM_TOKEN': 'your_secret_token',
 
+
+    'SYSTEM_PROTOCOL': 'ructf_http',
+    'SYSTEM_URL': 'http://10.10.0.1:8080/flags',
+    'SYSTEM_TOKEN': 'a032d2b07e8d76968a3abe62a5124627',
+
+
     # 'SYSTEM_PROTOCOL': 'volgactf',
     # 'SYSTEM_HOST': '127.0.0.1',
 
-    'SYSTEM_PROTOCOL': 'forcad_tcp',
-    'SYSTEM_HOST': '10.10.0.1',
-    'SYSTEM_PORT': 31337,
-    'TEAM_TOKEN': 'ea8943ee3e9ae788',
+    # 'SYSTEM_PROTOCOL': 'forcad_tcp',
+    # 'SYSTEM_HOST': '10.10.0.1',
+    # 'SYSTEM_PORT': 31337,
+    # 'TEAM_TOKEN': 'ea8943ee3e9ae788',
 
     # 'SYSTEM_PROTOCOL': 'forcad_tcp',
     # 'SYSTEM_HOST': '130.192.5.212',
