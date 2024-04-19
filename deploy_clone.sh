@@ -1,6 +1,9 @@
 #!/bin/sh
 simad_folder="$HOME/simad"
 
+# clone simad repo in $HOME (should be /root)
+git clone --recurse-submodules https://github.com/koraynilay/simad "$simad_folder"
+
 # install and start firegex
 "$simad_folder"/firegex.py --port 65000
 # uncomment this if you want to get the latest version
