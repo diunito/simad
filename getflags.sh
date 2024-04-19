@@ -1,7 +1,12 @@
 #!/bin/bash
-[[ "$#" -ne 2 ]] && echo -e 'Usage: $0 [service name] [script executable]' && exit 1
+[[ "$#" -lt 2 ]] && echo -e "Usage: $0 [service name] [script executable]\nOR\nUsage: $0 [service name] [script executable] [team ip]" && exit 1
 service=$1
-filename="flagids_$service.json"
-#curl http://10.10.0.1:8081/flagIds\?service\=$service | jq > "$filename"
-curl http://10.10.0.1:8081/flagIds\?service\=$service > "$filename"
+team=$3
+if [ "$#" -eq 2 ];then
+	filename="flagids_${service}.json"
+	curl http://10.10.0.1:8081/flagIds\?service\=$service > "$filename"
+elif [ "$#" -eq 3 ];then
+	filename="flagids_${service}_${team}.json"
+	curl http://10.10.0.1:8081/flagIds\?service\=$service\&team\=$team > "$filename"
+fi
 ./"$2" "$filename"
