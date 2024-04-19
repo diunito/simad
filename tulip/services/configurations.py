@@ -32,10 +32,10 @@
 #mongo_server = f'mongodb://{mongo_host}/'
 
 vm_ip = "10.60.81.1"
-services = [{"ip": vm_ip, "port": 1234, "name": "rathersecurearchive"},
-            {"ip": vm_ip, "port": 4444, "name": "cs"},
-            {"ip": vm_ip, "port": 8000, "name": "filmlibrary"},
-            {"ip": vm_ip, "port": 3306, "name": "mysql"},
+services = [{"ip": vm_ip, "port": 1337, "name": "cc_market"},
+            {"ip": vm_ip, "port": 8000, "name": "crashair"},
+            {"ip": vm_ip, "port": 8080, "name": "notes"},
+            {"ip": vm_ip, "port": 5000, "name": "polls"},
 ]
 #vm_ip = "10.66.7.1"
 #

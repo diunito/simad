@@ -31,9 +31,8 @@ start_date = os.getenv("TICK_START", "2018-06-27T13:00+02:00")
 mongo_host = os.getenv("TULIP_MONGO", "localhost:27017")
 mongo_server = f'mongodb://{mongo_host}/'
 vm_ip = "10.60.81.1"
-
-services = [{"ip": vm_ip, "port": 1234, "name": "rathersecurearchive"},
-            {"ip": vm_ip, "port": 4444, "name": "cs"},
-            {"ip": vm_ip, "port": 8000, "name": "filmlibrary"},
-            {"ip": vm_ip, "port": 3306, "name": "mysql"},
+services = [{"ip": vm_ip, "port": 1337, "name": "cc_market"},
+            {"ip": vm_ip, "port": 8000, "name": "crashair"},
+            {"ip": vm_ip, "port": 8080, "name": "notes"},
+            {"ip": vm_ip, "port": 5000, "name": "polls"},
 ]

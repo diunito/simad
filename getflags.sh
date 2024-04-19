@@ -1,11 +1,11 @@
 #!/bin/bash
 [[ "$#" -lt 2 ]] && \
-	echo -e "Usage: $0 [service name] [script executable]" \
+	echo -e "Usage: $0 [script executable] [service name]" \
 	echo "OR" \
-	echo "Usage: $0 [service name] [script executable] [team ip]" \
+	echo "Usage: $0 [team ip] [script executable] [service name]" \
 	&& exit 1
-service=$1
-team=$3
+team=$1
+service=$3
 dir="/tmp"
 if [ "$#" -eq 2 ];then
 	filename="${dir}/flagids_${service}.json"
