@@ -1,5 +1,9 @@
 #!/bin/bash
-[[ "$#" -lt 2 ]] && echo -e "Usage: $0 [service name] [script executable]\nOR\nUsage: $0 [service name] [script executable] [team ip]" && exit 1
+[[ "$#" -lt 2 ]] && \
+	echo -e "Usage: $0 [service name] [script executable]" \
+	echo "OR" \
+	echo "Usage: $0 [service name] [script executable] [team ip]" \
+	&& exit 1
 service=$1
 team=$3
 dir="/tmp"
