@@ -22,7 +22,8 @@ CONFIG = {
 
     'SYSTEM_PROTOCOL': 'ructf_http',
     'SYSTEM_URL': 'http://10.10.0.1:8080/flags',
-    'SYSTEM_TOKEN': 'a032d2b07e8d76968a3abe62a5124627',
+    #'SYSTEM_TOKEN': 'a032d2b07e8d76968a3abe62a5124627',
+    'SYSTEM_TOKEN': '17cea63121928b09ffd8e0a5886ff0d1',
 
 
     # 'SYSTEM_PROTOCOL': 'volgactf',
