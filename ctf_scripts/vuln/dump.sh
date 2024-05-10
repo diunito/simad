@@ -61,10 +61,11 @@ fi
 # check if dir exist
 if [ ! -d "$dir" ] 
   then
-    echo "Folder $dir does not exist"
+    echo "Folder $dir does not exist, creating it"
     mkdir $1
 fi
 
+touch "$dir/eve.json"
 
 i=1
 j=1
