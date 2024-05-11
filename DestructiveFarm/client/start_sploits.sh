@@ -1,9 +1,9 @@
 #!/bin/bash
 handle_exit() {
+	echo 'got Ctrl+C, killing all sploits'
 	for pid in $@;do
-		pkill --signal SIGINT -P $pid
-		kill $pid
-		echo "killed $pid and children (hopefully)"
+		kill -INT $pid
+		echo "killed $pid"
 	done
 }
 
@@ -37,17 +37,18 @@ for script in *;do
 	if [ "$single" = "yes" ];then
 		echo "$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)"
 	else
-		"$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)" 2>&1 3>&1 1> "$la" &
+		#"$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)" 2>&1 3>&1 1> "$la" &
+		"$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)" &
 		pids+=("$!")
 	fi
 done
 
 if ! [ "$single" = "yes" ];then
-	echo ${pids[*]}
+	echo sploits pids: ${pids[*]}
 	trap "handle_exit ${pids[*]}" SIGINT
 	echo trapped
 
-	sleep 0.5
-	cd "$logf"
-	tail -f *.log
+	for pid in ${pids[*]};do
+		wait $pid
+	done
 fi
