@@ -16,6 +16,7 @@ import stat
 import subprocess
 import time
 import threading
+import signal # to catch SIGINT
 from concurrent.futures import ThreadPoolExecutor
 from enum import Enum
 from math import ceil
@@ -195,7 +196,7 @@ if os_windows:
     # By default, Ctrl+C does not work on Windows if we spawn subprocesses.
     # Here we fix that using WinApi. See https://stackoverflow.com/a/43095532
 
-    import signal
+    #import signal
     import ctypes
     from ctypes import wintypes
 
@@ -570,8 +571,12 @@ def shutdown():
         for proc in instance_storage.instances.values():
             proc.kill()
 
+def sigint_handle(sig, frame):
+    logging.info('SIGINT received, shutting down')
+    shutdown()
 
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, sigint_handle)
     try:
         main(parse_args())
     except KeyboardInterrupt:
