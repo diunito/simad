@@ -10,8 +10,7 @@ handle_exit() {
 single=${1:-no}
 startf="$PWD"
 ssf="$startf" # start_sploit.py folder
-logf="logs"
-curf="cur"
+curf="$1"
 ip="10.81.81.16"
 port="5000"
 tokfile="/tmp/.dftok"
@@ -20,24 +19,26 @@ if ! [ -f "$tokfile" ];then
 	exit 1
 fi
 
+if [ "$curf" = "--help" ];then
+	echo "Usage: $0 [folder with only sploits]"
+	exit 0
+fi
+
 if ! [ -d "$curf" ];then
-	echo "Error: no '$curf' folder"
+	echo "Usage: $0 [folder with only sploits]"
 	exit 2
 fi
 cd "$curf"
 
-if ! [ -d "$logf" ];then
-	mkdir -v "$logf"
-fi
-
 pids=()
 for script in *;do
-	la="$logf/$script.log"
+	if [ "$script" = "start_sploit.py" ] || [ "$script" = "start_sploits.sh" ];then
+		continue
+	fi
 	script="$PWD/$script"
 	if [ "$single" = "yes" ];then
 		echo "$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)"
 	else
-		#"$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)" 2>&1 3>&1 1> "$la" &
 		"$ssf"/start_sploit.py "$script" -u "$ip:$port" --token "$(<$tokfile)" &
 		pids+=("$!")
 	fi
