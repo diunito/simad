@@ -1,26 +1,4 @@
 #!/bin/bash
-#diff 2ndsimad/CApp/CApp/src/code/wm.py orig/CApp/CApp/src/code/wm.py # incompleta
-#diff 2ndsimad/FIXME/fixme/src/api/products.js orig/FIXME/fixme/src/api/products.js # incompleta
-#diff 2ndsimad/CC-Manager/app/crypto.py orig/CC-Manager/app/crypto.py # completa
-
-
-#scp \
-#	2ndsimad/CC-Manager/app/crypto.py \
-#	2ndsimad/FIXME/fixme/src/api/products.js \
-#	2ndsimad/CApp/CApp/src/code/wm.py \
-#	root@10.60.81.1:/root
-#
-#vimdiff serv_orig/CApp/CApp/src/code/wm.py serv2/CApp/CApp/src/code/wm.py
-#vimdiff serv_orig/CApp/.env serv2/CApp/.env
-#vimdiff serv_orig/CC-Manager/app/crypto.py serv2/CC-Manager/app/crypto.py
-#vimdiff serv_orig/CC-Manager/app/service.py serv2/CC-Manager/app/service.py
-#vimdiff serv_orig/CC-Manager/app/users.py serv2/CC-Manager/app/users.py
-#vimdiff serv_orig/CC-Manager/app/utils.py serv2/CC-Manager/app/utils.py
-#vimdiff serv_orig/CC-Manager/docker-compose.yml serv2/CC-Manager/docker-compose.yml
-#vimdiff serv_orig/FIXME/docker-compose.yml serv2/FIXME/docker-compose.yml
-#vimdiff serv_orig/FIXME/fixme/src/api/products.js serv2/FIXME/fixme/src/api/products.js
-
-
 set -x # to see executed commands
 vm_ip=""
 vmpass=""
