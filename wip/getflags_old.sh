@@ -7,12 +7,14 @@
 team=$3
 service=$1
 dir="/tmp"
+ip="10.10.0.1"
+port="8081"
 if [ "$#" -eq 2 ];then
 	filename="${dir}/flagids_${service}.json"
-	curl http://10.10.0.1:8081/flagIds\?service\=$service > "$filename"
+	curl http://$ip:$port/flagIds\?service\=$service > "$filename"
 elif [ "$#" -eq 3 ];then
 	filename="${dir}/flagids_${service}_${team}.json"
-	curl http://10.10.0.1:8081/flagIds\?service\=$service\&team\=$team > "$filename"
+	curl http://$ip:$port/flagIds\?service\=$service\&team\=$team > "$filename"
 fi
 ./"$2" "$filename"
 rm -v "$filename"
