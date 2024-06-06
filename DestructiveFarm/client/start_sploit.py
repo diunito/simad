@@ -421,8 +421,10 @@ def launch_sploit(args, team_name, team_addr, attack_no, flag_format, idf):
     # if the sploit's output is redirected to a pipe.
     env = os.environ.copy()
     env['PYTHONUNBUFFERED'] = '1'
-    env['IDFIP'] = idf[0]
-    env['IDFPORT'] = idf[1]
+    if idf[0] is not None:
+        env['IDFIP'] = idf[0]
+    if idf[1] is not None:
+        env['IDFPORT'] = idf[1]
 
     command = [os.path.abspath(args.sploit)]
     if args.interpreter is not None:
@@ -544,7 +546,10 @@ def main(args):
         try:
             config = get_config(args)
             flag_format = re.compile(config['FLAG_FORMAT'])
-            idf = (config['SYSTEM_ID_FLAGS_IP'], config['SYSTEM_ID_FLAGS_PORT'])
+            idfip_name = 'SYSTEM_ID_FLAGS_IP'
+            idfport_name = 'SYSTEM_ID_FLAGS_PORT'
+            idf = (config[idfip_name] if idfip_name in config.keys() else None,
+                   config[idfport_name] if idfport_name in config.keys() else None)
         except Exception as e:
             logging.error("Can't get config from the server: {}".format(repr(e)))
             if attack_no == 1:
