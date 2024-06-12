@@ -2,8 +2,7 @@
 
 import os
 import sys
-#import json
-import csv
+import json
 import shutil
 
 from pathlib import Path, PosixPath
@@ -67,28 +66,26 @@ def parse_services():
         with open(file, "r") as fs:
             ymlfile = yaml.load(file)
 
-        services_dict[service.stem] = {"path": str(service.resolve()), "containers": {}}
+        services_dict[service.stem] = {"name": service.stem, "path": str(service.resolve()), "containers": {}}
 
         for container in ymlfile["services"]:
             try:
                 ports_string = ymlfile["services"][container]["ports"]
                 ports_list = [p.split(":") for p in ports_string]
 
-                http = []
+                type = []
                 for port in ports_list:
-                    http.append(
-                        True
-                        if "y"
-                        in input(
-                            f"Is the service from {service.stem} {container}:{port[-2]} http? [y/N] "
-                        )
-                        else False
-                    )
+                    to_app = "web" if "y" in input(
+                                f"Is the service from {service.stem} {container}:{port[-2]} http? [y/N] "
+                            ) else "tcp" if "y" in input(
+                                    f"... tcp? [y/N] "
+                                ) else input(f"... what type is it? ")
+                    type.append(to_app)
 
                 container_dict = {
                     "target_port": [p[-1] for p in ports_list],
                     "listen_port": [p[-2] for p in ports_list],
-                    "http": [h for h in http],
+                    "type": [h for h in type],
                 }
                 services_dict[service.stem]["containers"][container] = container_dict
 
@@ -97,10 +94,8 @@ def parse_services():
             except Exception as e:
                 raise e
 
-        with open("services.csv", "w") as backupfile:
-            w = csv.DictWriter(backupfile, services_dict.keys())
-            w.writeheader()
-            w.writerow(services_dict)
+        with open("services.json", "w") as backupfile:
+            json.dump(services_dict, backupfile, indent=2)
     print("Found services:")
     for service in services_dict:
         print(f"\t{service}")
