@@ -2,7 +2,8 @@
 
 import os
 import sys
-import json
+#import json
+import csv
 import shutil
 
 from pathlib import Path, PosixPath
@@ -96,8 +97,10 @@ def parse_services():
             except Exception as e:
                 raise e
 
-        with open("services.json", "w") as backupfile:
-            json.dump(services_dict, backupfile, indent=2)
+        with open("services.csv", "w") as backupfile:
+            w = csv.DictWriter(backupfile, services_dict.keys())
+            w.writeheader()
+            w.writerow(services_dict)
     print("Found services:")
     for service in services_dict:
         print(f"\t{service}")
