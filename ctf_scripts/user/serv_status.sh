@@ -1,21 +1,33 @@
 #!/bin/bash
+check_web() {
+	# $2: ip
+	# $3: port
+	curl http://$2:$3 --write-out "%{http_code}" --silent --output /dev/null
+}
+check_tcp() {
+	# $2: ip
+	# $3: port
+	return nc -w 3 $2 $3
+}
+check_serv() {
+	# $1: type (web, tcp)
+	# $2: ip
+	# $3: port
+	if [ "$1" = "web" ];then
+		return check_web $2 $3
+	elif [ "$1" = "tcp" ];then
+		return check_tcp $2 $3
+	fi
+}
 
 echo -n "testing type $type\t$ip:$port ($serv)... " 
-if ! nc -w 3 $ip $port;then
+if ! check_serv $type $ip $port;then
 	echo "FAILED"
 else
 	echo "OK"
 fi
 
 #delis() {
-#	curl https://api.listenbrainz.org/1/delete-listen \
-#			-H "Authorization: Token $(tr -d '\n' < .env)" \
-#			-H "Content-Type: application/json" \
-#			-X POST \
-#			-d "{
-#				\"listened_at\": $1,
-#				\"recording_msid\":\"$2\"
-#			}" --write-out "%{http_code}" --silent --output /dev/null
 #}
 #
 #while read a; do 
