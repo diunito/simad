@@ -1,7 +1,8 @@
 #!/bin/bash
 . $HOME/simad/ctf_scripts/lib/servinfo/serv_status.sh
 . $HOME/simad/ctf_scripts/lib/misc.sh
-json=$(<$HOME/services.json)
+#json=$(<$HOME/services.json)
+json=$(<$HOME/ICC2023-AD-CTF/services/services.json)
 
 ip=10.60.81.1
 jq -c '.[]' <<< $json | while read serv; do
