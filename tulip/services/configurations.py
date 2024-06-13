@@ -37,7 +37,7 @@ services = [{"ip": vm_ip, "port": 1337, "name": "ticcket"},
             {"ip": vm_ip, "port": 80, "name": "capp"},
             {"ip": vm_ip, "port": 5000, "name": "cc_manager"},
 ]
-]
+
 #vm_ip = "10.66.7.1"
 #
 #services = [{"ip": vm_ip, "port": 1234, "name": "serathersecurearchive"},
