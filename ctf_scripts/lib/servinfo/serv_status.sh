@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/false
+# uses bash
 check_web() {
 	# $2: ip
 	# $3: port

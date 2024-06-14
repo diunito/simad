@@ -46,7 +46,7 @@ if [ $# -lt 1 ]
     echo "No arguments supplied"
     echo "Usage: ./dump.sh <dir>" 
     echo "or"
-    echo "Usage: ./dump.sh <dir> <tulip_ip> <tulip_password>"
+    echo "Usage: ./dump.sh <dir> <tulip_ip:port> <tulip_password>"
     exit
 fi
 
@@ -54,7 +54,7 @@ dir=$1
 
 if [ $# -eq 3 ]
   then
-    ip=$2
+    host=$2
     pass=$3
 fi
 
@@ -69,10 +69,11 @@ touch "$dir/eve.json"
 
 i=1
 j=1
-# check if exist files on format CTF_dump_*.pcap
-if [ "$(ls -A $dir) | grep CTF_dump" ]
+prefix="CTF_dump"
+# check if exist files on format $[prefix}_*.pcap
+if [ "$(ls -A $dir) | grep "$prefix"" ]
   then
-    i=$(ls -A $dir | grep CTF_dump | tail -n 1 | cut -d'_' -f3 | cut -d'.' -f1)
+    i=$(ls -A $dir | grep "$prefix" | tail -n 1 | cut -d'_' -f3 | cut -d'.' -f1)
     echo "Last dump file: $i"
     i=$((i+1))
     echo "Continue from $i"
@@ -82,13 +83,14 @@ fi
 while true
 do
     echo "Dumping $i"
-    timeout 120 tcpdump -i game -w ${dir}/CTF_dump_$i.pcap port not 22 &
+    fn="${dir}/${prefix}_$i.pcap"
+    timeout 120 tcpdump -i game -w "$fn" port not 22 &
     tcpdump_pid=$!
     wait $tcpdump_pid
     if [ $# -eq 3 ]
       then
         echo "Uploading $i"
-        curl -F "file=@${dir}CTF_final_$i.pcap" http://$ip:5000/upload -u "tulip:$pass"
+        curl -F "file=@$fn" http://$host/upload -u "tulip:$pass"
     fi
     i=$((i+1))
     sleep 2
