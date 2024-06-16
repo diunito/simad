@@ -7,3 +7,6 @@
 [submodule "ctf_scripts"]
 	path = ctf_scripts
 	url = https://github.com/koraynilay/ctf_scripts.git
+[submodule "priv"]
+	path = priv
+	url = git@github.com:koraynilay/simad_priv.git
