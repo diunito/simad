@@ -1,3 +1,6 @@
 [submodule "tulip"]
 	path = tulip
 	url = https://github.com/koraynilay/tulip.git
+[submodule "DestructiveFarm"]
+	path = DestructiveFarm
+	url = https://github.com/koraynilay/DestructiveFarm.git
