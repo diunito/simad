@@ -4,3 +4,6 @@
 [submodule "DestructiveFarm"]
 	path = DestructiveFarm
 	url = https://github.com/koraynilay/DestructiveFarm.git
+[submodule "ctf_scripts"]
+	path = ctf_scripts
+	url = https://github.com/koraynilay/ctf_scripts.git
