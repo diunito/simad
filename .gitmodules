@@ -1,15 +1,15 @@
 [submodule "tulip"]
 	path = tulip
-	url = https://github.com/koraynilay/tulip.git
+	url = ../tulip.git
 [submodule "DestructiveFarm"]
 	path = DestructiveFarm
-	url = https://github.com/koraynilay/DestructiveFarm.git
+	url = ../DestructiveFarm.git
 [submodule "ctf_scripts"]
 	path = ctf_scripts
-	url = https://github.com/koraynilay/ctf_scripts.git
+	url = ../ctf_scripts.git
 [submodule "firegex"]
 	path = firegex
-	url = https://github.com/koraynilay/firegex.git
+	url = ../firegex.git
 [submodule "priv"]
 	path = priv
-	url = git@github.com:koraynilay/simad_priv.git
+	url = ../simad_priv.git
