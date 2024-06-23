@@ -20,3 +20,6 @@
 [submodule "priv"]
 	path = priv
 	url = ../simad_priv.git
+[submodule "ctf_proxy"]
+	path = ctf_proxy
+	url = https://github.com/diunito/ctf_proxy.git
