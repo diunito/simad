@@ -1,15 +1,22 @@
+# tulip fork, public
 [submodule "tulip"]
 	path = tulip
 	url = ../tulip.git
+# DestructiveFarm fork, public
 [submodule "DestructiveFarm"]
 	path = DestructiveFarm
 	url = ../DestructiveFarm.git
-[submodule "ctf_scripts"]
-	path = ctf_scripts
-	url = ../ctf_scripts.git
+# firegex fork, public
 [submodule "firegex"]
 	path = firegex
 	url = ../firegex.git
+# AlessandroMIlani's ctf_scripts fork, public
+[submodule "ctf_scripts"]
+	path = ctf_scripts
+	url = ../ctf_scripts.git
+# contains our exploits and configs
+# so yeah, "priv" is private :(
+# (but our exploits will probably be published in another repo later on)
 [submodule "priv"]
 	path = priv
 	url = ../simad_priv.git
