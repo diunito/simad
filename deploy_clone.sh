@@ -5,4 +5,7 @@ simad_folder="$HOME/simad"
 git clone --recurse-submodules git@github.com:diunito/simad "$simad_folder"
 
 cd "$simad_folder" || echo "cd $simad_folder failed" && exit
+
+git submodule foreach 'git switch master || git switch main'
+
 ./deploy.sh "$@"
