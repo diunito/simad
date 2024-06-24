@@ -1,2 +1,2 @@
 #!/bin/bash
-ctf_scripts/vuln/dump.sh /pcaps
+sudo ctf_scripts/vuln/dump.sh /pcaps
