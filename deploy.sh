@@ -3,10 +3,13 @@ simad_folder="$HOME/simad"
 servs_backup_folder="/servs"
 
 # backup everything
-cp -avr "$HOME" "$servs_backup_folder"
+cp -anvr "$HOME" "$servs_backup_folder"
 
 # install and start firegex
 "$simad_folder/start_firegex.sh"
 
 # start tcpdump
-"$simad_folder"/ctf_scripts/vuln/dump.sh /pcaps
+tmux new-session -d -s tcpdump "$simad_folder"/start_tcpdump.sh
+
+# start ctf_proxy
+"$simad_folder"/start_ctfproxy.sh
