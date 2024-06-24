@@ -9,7 +9,7 @@ cp -anvr "$HOME" "$servs_backup_folder"
 "$simad_folder/start_firegex.sh"
 
 # start tcpdump
-tmux new-session -d -s tcpdump "$simad_folder"/start_tcpdump.sh
+systemd-run --scope --user tmux tmux new-session -d -s tcpdump "$simad_folder"/start_tcpdump.sh
 
 # start ctf_proxy
 "$simad_folder"/start_ctfproxy.sh
