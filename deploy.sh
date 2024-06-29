@@ -12,4 +12,4 @@ cp -anvr "$HOME" "$servs_backup_folder"
 tmux new-session -d -s tcpdump "$simad_folder"/start_tcpdump.sh
 
 # start ctf_proxy
-"$simad_folder"/start_ctfproxy.sh
+#"$simad_folder"/start_ctfproxy.sh
